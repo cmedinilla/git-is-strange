@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "GH PR Warning",
+  "version": "1.0",
+  "description": "Show a 'This action will have consequences' modal before creating a PR on GitHub.",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://github.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content-script.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
