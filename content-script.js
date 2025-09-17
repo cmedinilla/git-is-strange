@@ -1,8 +1,7 @@
 (function () {
   'use strict';
 
-  const MAIN_TEXT = 'This action will have consequences';
-  const SUB_TEXT = 'Are you sure you want to create this Pull Request?';
+  const SUB_TEXT = 'Are you sure you want to create this Pull Request????';
 
   function createModal() {
     if (document.querySelector('.gh-pr-warning-overlay')) return null;
@@ -13,21 +12,9 @@
     const modal = document.createElement('div');
     modal.className = 'gh-pr-warning-modal';
 
-    const deco = document.createElement('div');
-    deco.className = 'gh-pr-warning-deco';
-    deco.innerHTML = `
-      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M12 2v20" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M5 8h14" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
-      </svg>`;
-
-    const title = document.createElement('div');
-    title.className = 'gh-pr-warning-title';
-    title.textContent = 'This action will have consequences';
-
     const sub = document.createElement('div');
     sub.className = 'gh-pr-warning-sub';
-    sub.textContent = 'Are you sure you want to create this Pull Request?';
+    sub.textContent = SUB_TEXT
 
     const actions = document.createElement('div');
     actions.className = 'gh-pr-warning-actions';
@@ -43,16 +30,11 @@
     actions.appendChild(confirm);
     actions.appendChild(cancel);
 
-    // Butterfly element
-    const butterfly = document.createElement('img');
-    butterfly.src = 'https://upload.wikimedia.org/wikipedia/commons/3/32/Butterfly_icon.svg';
-    butterfly.className = 'gh-pr-butterfly';
+    // Set butterfly GIF as background
+    modal.style.backgroundImage = `url(${chrome.runtime.getURL('assets/bk5r6vzyvp661.gif')})`;
 
-    modal.appendChild(deco);
-    modal.appendChild(title);
     modal.appendChild(sub);
     modal.appendChild(actions);
-    modal.appendChild(butterfly);
     overlay.appendChild(modal);
 
     // Play sound
